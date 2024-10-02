@@ -21,8 +21,10 @@ def main() -> None:
     with open(file, "rb") as f:
       content = f.read()
       content_hex = convert_to_hex(content)
-      for i in range(len(content_hex)):
-          print(content_hex[i])
+      line_count = 1
+      for line in content_hex:
+            print(f"{line_count:07d}  ", " ".join(line))
+            line_count += 1
   except FileNotFoundError:
     print(f"Error: File '{file}' not found")
 
