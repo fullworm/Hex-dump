@@ -1,6 +1,6 @@
 import sys
 
-def convert_to_hex(data: bytes) -> list[str]:
+def convert_to_hex(data: bytes) -> list[list[hex]]:
   chunk_size = 4
   hex_string = "".join(hex(byte)[2:].zfill(2) for byte in data)
   new = [hex_string[i:i + chunk_size] for i in range(0, len(hex_string), chunk_size)]
@@ -22,9 +22,11 @@ def main() -> None:
       content = f.read()
       content_hex = convert_to_hex(content)
       line_count = 1
+
       for line in content_hex:
             print(f"{line_count:07d}  ", " ".join(line))
             line_count += 1
+
   except FileNotFoundError:
     print(f"Error: File '{file}' not found")
 
